@@ -18,21 +18,14 @@ router.get('/register', (req, res) => {
   res.render('users/register');
 });
 
-//Login Form POST
+// Login Form POST
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/ideas',
     failureRedirect: '/users/login',
     failureFlash: true
   })(req, res, next);
-})
-
-//Logout User
-router.get('/logout', (req, res) => {
-  req.logout();
-  req.flash('success_msg', 'You are logged out');
-  res.redirect('/users/login');
-})
+});
 
 // Register Form POST
 router.post('/register', (req, res) => {
@@ -91,6 +84,13 @@ router.post('/register', (req, res) => {
         }
       });
   }
+});
+
+// Logout User
+router.get('/logout', (req, res) => {
+  req.logout();
+  req.flash('success_msg', 'You are logged out');
+  res.redirect('/users/login');
 });
 
 module.exports = router;

@@ -5,9 +5,6 @@ const {
   ensureAuthenticated
 } = require('../helpers/auth');
 
-//Load Helper
-
-
 // Load Idea Model
 require('../models/Idea');
 const Idea = mongoose.model('ideas');
@@ -46,6 +43,7 @@ router.get('/edit/:id', ensureAuthenticated, (req, res) => {
           idea: idea
         });
       }
+
     });
 });
 
